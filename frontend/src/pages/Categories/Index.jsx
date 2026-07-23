@@ -57,87 +57,109 @@ function CategoriesIndex() {
     }
 
     return (
-        <div>
-            <h1>Categorías</h1>
+        <div className="card">
 
-            <Link
-                to="/categories/create"
-            >
-                Nueva Categoría
-            </Link>
+            <div className="card-body">
 
-            <br />
-            <br />
+                <div className="d-flex justify-content-between align-items-center mb-4">
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>
-                            Acciones
-                        </th>
-                    </tr>
-                </thead>
+                    <h1 className="mb-0">
+                        Categorías
+                    </h1>
 
-                <tbody>
-                    {categories.length ===
-                        0 ? (
+                    <Link
+                        to="/categories/create"
+                        className="btn btn-success"
+                    >
+                        Nueva Categoría
+                    </Link>
+
+                </div>
+
+                <table className="table table-striped table-hover align-middle">
+
+                    <thead className="table-dark">
+
                         <tr>
-                            <td
-                                colSpan="3"
-                            >
-                                No existen
-                                categorías.
-                            </td>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
                         </tr>
-                    ) : (
-                        categories.map(
-                            (
-                                category
-                            ) => (
-                                <tr
-                                    key={
-                                        category.id
-                                    }
+
+                    </thead>
+
+                    <tbody>
+
+                        {categories.length === 0 ? (
+
+                            <tr>
+
+                                <td
+                                    colSpan="3"
+                                    className="text-center"
                                 >
-                                    <td>
-                                        {
+                                    No existen categorías.
+                                </td>
+
+                            </tr>
+
+                        ) : (
+
+                            categories.map(
+                                (category) => (
+
+                                    <tr
+                                        key={
                                             category.id
                                         }
-                                    </td>
+                                    >
 
-                                    <td>
-                                        {
-                                            category.name
-                                        }
-                                    </td>
-
-                                    <td>
-                                        <Link
-                                            to={`/categories/${category.id}/edit`}
-                                        >
-                                            Editar
-                                        </Link>
-
-                                        {" | "}
-
-                                        <button
-                                            onClick={() =>
-                                                deleteCategory(
-                                                    category.id
-                                                )
+                                        <td>
+                                            {
+                                                category.id
                                             }
-                                        >
-                                            Eliminar
-                                        </button>
-                                    </td>
-                                </tr>
+                                        </td>
+
+                                        <td>
+                                            {
+                                                category.name
+                                            }
+                                        </td>
+
+                                        <td>
+
+                                            <Link
+                                                className="btn btn-warning btn-sm me-2"
+                                                to={`/categories/${category.id}/edit`}
+                                            >
+                                                Editar
+                                            </Link>
+
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                onClick={() =>
+                                                    deleteCategory(
+                                                        category.id
+                                                    )
+                                                }
+                                            >
+                                                Eliminar
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+                                )
                             )
-                        )
-                    )}
-                </tbody>
-            </table>
+
+                        )}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
         </div>
     );
 }

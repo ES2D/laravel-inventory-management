@@ -66,73 +66,76 @@ function CategoriesEdit() {
     }
 
     return (
-        <div>
-            <h1>
-                Editar Categoría
-            </h1>
+        <div className="card">
 
-            <hr />
+            <div className="card-body">
 
-            <div>
-                <label>
-                    Nombre
-                </label>
+                <h1 className="mb-4">
+                    Editar Categoría
+                </h1>
 
-                <br />
+                <div className="mb-3">
 
-                <input
-                    type="text"
-                    value={name ?? ""}
-                    onChange={(e) =>
-                        setName(
-                            e.target.value
+                    <label className="form-label">
+                        Nombre
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="text"
+                        value={name ?? ""}
+                        onChange={(e) =>
+                            setName(
+                                e.target.value
+                            )
+                        }
+                    />
+
+                </div>
+
+                <div className="mb-4">
+
+                    <label className="form-label">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        className="form-control"
+                        rows="4"
+                        value={
+                            description ?? ""
+                        }
+                        onChange={(e) =>
+                            setDescription(
+                                e.target.value
+                            )
+                        }
+                    />
+
+                </div>
+
+                <button
+                    className="btn btn-primary me-2"
+                    onClick={
+                        updateCategory
+                    }
+                >
+                    Actualizar
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() =>
+                        navigate(
+                            "/categories"
                         )
                     }
-                />
+                >
+                    Volver
+                </button>
+
             </div>
 
-            <br />
-
-            <div>
-                <label>
-                    Descripción
-                </label>
-
-                <br />
-
-                <textarea
-                    value={
-                        description ?? ""
-                    }
-                    onChange={(e) =>
-                        setDescription(
-                            e.target.value
-                        )
-                    }
-                />
-            </div>
-
-            <br />
-
-            <button
-                onClick={
-                    updateCategory
-                }
-            >
-                Actualizar
-            </button>
-
-            {" "}
-
-            <button
-                onClick={() =>
-                    navigate(
-                        "/categories"
-                    )
-                }
-            >
-                Volver
-            </button>
         </div>
     );
 }

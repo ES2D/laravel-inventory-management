@@ -24,6 +24,11 @@ function App() {
             <h1>Inventory System</h1>
         </div>
     );
+    <Layout>
+        <RouterProvider
+            router={router}
+        />
+    </Layout>
 }
 
 export default App;

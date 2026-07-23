@@ -5,7 +5,8 @@ import api from "../../services/api";
 
 function ProductsIndex() {
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] =
+        useState([]);
 
     useEffect(() => {
 
@@ -61,110 +62,121 @@ function ProductsIndex() {
     }
 
     return (
-        <div>
+        <div className="card">
 
-            <h1>Productos</h1>
+            <div className="card-body">
 
-            <Link to="/products/create">
-                Nuevo Producto
-            </Link>
+                <div className="d-flex justify-content-between align-items-center mb-4">
 
-            <br />
-            <br />
+                    <h1 className="mb-0">
+                        Productos
+                    </h1>
 
-            <table border="1">
+                    <Link
+                        to="/products/create"
+                        className="btn btn-success"
+                    >
+                        Nuevo Producto
+                    </Link>
 
-                <thead>
+                </div>
 
-                    <tr>
-                        <th>SKU</th>
-                        <th>Nombre</th>
-                        <th>Categoría</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Acciones</th>
-                    </tr>
+                <table className="table table-striped table-hover align-middle">
 
-                </thead>
-
-                <tbody>
-
-                    {products.length === 0 ? (
+                    <thead className="table-dark">
 
                         <tr>
-                            <td
-                                colSpan="6"
-                            >
-                                No existen productos registrados.
-                            </td>
+                            <th>SKU</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
                         </tr>
 
-                    ) : (
+                    </thead>
 
-                        products.map((product) => (
+                    <tbody>
 
-                            <tr key={product.id}>
+                        {products.length === 0 ? (
 
-                                <td>
-                                    {product.sku}
+                            <tr>
+                                <td
+                                    colSpan="6"
+                                    className="text-center"
+                                >
+                                    No existen productos registrados.
                                 </td>
-
-                                <td>
-                                    {product.name}
-                                </td>
-
-                                <td>
-                                    {
-                                        product
-                                            .category
-                                            ?.name
-                                    }
-                                </td>
-
-                                <td>
-                                    $
-                                    {
-                                        product.sale_price
-                                    }
-                                </td>
-
-                                <td>
-                                    {
-                                        product.current_stock
-                                    }
-                                </td>
-
-                                <td>
-
-                                    <Link
-                                        to={`/products/${product.id}/edit`}
-                                    >
-                                        Editar
-                                    </Link>
-
-                                    {" | "}
-
-                                    <button
-                                        onClick={() =>
-                                            deleteProduct(
-                                                product.id
-                                            )
-                                        }
-                                    >
-                                        Eliminar
-                                    </button>
-
-                                </td>
-
                             </tr>
 
-                        ))
+                        ) : (
 
-                    )}
+                            products.map((product) => (
 
-                </tbody>
+                                <tr key={product.id}>
 
-            </table>
+                                    <td>
+                                        {product.sku}
+                                    </td>
+
+                                    <td>
+                                        {product.name}
+                                    </td>
+
+                                    <td>
+                                        {
+                                            product
+                                                .category
+                                                ?.name
+                                        }
+                                    </td>
+
+                                    <td>
+                                        $
+                                        {
+                                            product.sale_price
+                                        }
+                                    </td>
+
+                                    <td>
+                                        {
+                                            product.current_stock
+                                        }
+                                    </td>
+
+                                    <td>
+
+                                        <Link
+                                            to={`/products/${product.id}/edit`}
+                                            className="btn btn-warning btn-sm me-2"
+                                        >
+                                            Editar
+                                        </Link>
+
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() =>
+                                                deleteProduct(
+                                                    product.id
+                                                )
+                                            }
+                                        >
+                                            Eliminar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            ))
+
+                        )}
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
     );

@@ -2,51 +2,59 @@ import { Link, Outlet } from "react-router-dom";
 
 function MainLayout() {
     return (
-        <div style={{ padding: "20px" }}>
-            <h1>Inventory System</h1>
+        <div className="container">
 
-            <nav>
-                <ul
-                    style={{
-                        display: "flex",
-                        gap: "20px",
-                        listStyle: "none",
-                        padding: 0,
-                    }}
-                >
-                    <li>
-                        <Link to="/">Dashboard</Link>
-                    </li>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark mt-3 rounded">
 
-                    <li>
-                        <Link to="/categories">
+                <div className="container-fluid">
+
+                    <Link
+                        className="navbar-brand"
+                        to="/"
+                    >
+                        Inventory System
+                    </Link>
+
+                    <div className="navbar-nav">
+
+                        <Link
+                            className="nav-link"
+                            to="/categories"
+                        >
                             Categorías
                         </Link>
-                    </li>
 
-                    <li>
-                        <Link to="/products">
+                        <Link
+                            className="nav-link"
+                            to="/products"
+                        >
                             Productos
                         </Link>
-                    </li>
 
-                    <li>
-                        <Link to="/clients">
+                        <Link
+                            className="nav-link"
+                            to="/clients"
+                        >
                             Clientes
                         </Link>
-                    </li>
 
-                    <li>
-                        <Link to="/orders">
+                        <Link
+                            className="nav-link"
+                            to="/orders"
+                        >
                             Pedidos
                         </Link>
-                    </li>
-                </ul>
+
+                    </div>
+
+                </div>
+
             </nav>
 
-            <hr />
+            <div className="mt-4">
+                <Outlet />
+            </div>
 
-            <Outlet />
         </div>
     );
 }

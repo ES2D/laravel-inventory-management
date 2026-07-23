@@ -41,79 +41,80 @@ function CategoriesCreate() {
             alert(
                 error.response?.data
                     ?.message ??
-                    "Error al crear la categoría."
+                "Error al crear la categoría."
             );
         }
     }
 
     return (
-        <div>
-            <h1>
-                Nueva Categoría
-            </h1>
+        <div className="card">
 
-            <hr />
+            <div className="card-body">
 
-            <div>
-                <label>
-                    Nombre
-                </label>
+                <h1 className="mb-4">
+                    Nueva Categoría
+                </h1>
 
-                <br />
+                <div className="mb-3">
 
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) =>
-                        setName(
-                            e.target.value
+                    <label className="form-label">
+                        Nombre
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="text"
+                        value={name}
+                        onChange={(e) =>
+                            setName(
+                                e.target.value
+                            )
+                        }
+                    />
+
+                </div>
+
+                <div className="mb-4">
+
+                    <label className="form-label">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        className="form-control"
+                        rows="4"
+                        value={description}
+                        onChange={(e) =>
+                            setDescription(
+                                e.target.value
+                            )
+                        }
+                    />
+
+                </div>
+
+                <button
+                    className="btn btn-success me-2"
+                    onClick={
+                        saveCategory
+                    }
+                >
+                    Guardar
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() =>
+                        navigate(
+                            "/categories"
                         )
                     }
-                />
+                >
+                    Volver
+                </button>
+
             </div>
 
-            <br />
-
-            <div>
-                <label>
-                    Descripción
-                </label>
-
-                <br />
-
-                <textarea
-                    value={
-                        description
-                    }
-                    onChange={(e) =>
-                        setDescription(
-                            e.target.value
-                        )
-                    }
-                />
-            </div>
-
-            <br />
-
-            <button
-                onClick={
-                    saveCategory
-                }
-            >
-                Guardar
-            </button>
-
-            {" "}
-
-            <button
-                onClick={() =>
-                    navigate(
-                        "/categories"
-                    )
-                }
-            >
-                Volver
-            </button>
         </div>
     );
 }

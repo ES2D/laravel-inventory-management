@@ -131,138 +131,108 @@ function ClientsEdit() {
     }
 
     return (
-        <div>
+        <div className="card">
 
-            <h1>
-                Editar Cliente
-            </h1>
+            <div className="card-body">
 
-            <hr />
+                <h1 className="mb-4">
+                    Editar Cliente
+                </h1>
 
-            <div>
-                <label>
-                    Nombre
-                </label>
+                <div className="mb-3">
 
-                <br />
-
-                <input
-                    name="name"
-                    value={
-                        form.name
-                    }
-                    onChange={
-                        handleChange
-                    }
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Documento
-                </label>
-
-                <br />
-
-                <input
-                    name="document"
-                    value={
-                        form.document
-                    }
-                    onChange={
-                        handleChange
-                    }
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Correo
-                </label>
-
-                <br />
-
-                <input
-                    type="email"
-                    name="email"
-                    value={
-                        form.email
-                    }
-                    onChange={
-                        handleChange
-                    }
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Teléfono
-                </label>
-
-                <br />
-
-                <input
-                    name="phone"
-                    value={
-                        form.phone
-                    }
-                    onChange={
-                        handleChange
-                    }
-                />
-            </div>
-
-            <br />
-
-            <div>
-
-                <label>
+                    <label className="form-label">
+                        Nombre
+                    </label>
 
                     <input
-                        type="checkbox"
-                        name="is_active"
-                        checked={
-                            form.is_active
-                        }
-                        onChange={
-                            handleChange
-                        }
+                        className="form-control"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
                     />
 
-                    {" "}
-                    Activo
+                </div>
 
-                </label>
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Documento
+                    </label>
+
+                    <input
+                        className="form-control"
+                        name="document"
+                        value={form.document}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Correo
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Teléfono
+                    </label>
+
+                    <input
+                        className="form-control"
+                        name="phone"
+                        value={form.phone}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="form-check mb-4">
+
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="is_active"
+                        checked={form.is_active}
+                        onChange={handleChange}
+                    />
+
+                    <label className="form-check-label">
+                        Activo
+                    </label>
+
+                </div>
+
+                <button
+                    className="btn btn-primary me-2"
+                    onClick={updateClient}
+                >
+                    Actualizar
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() =>
+                        navigate("/clients")
+                    }
+                >
+                    Volver
+                </button>
 
             </div>
-
-            <br />
-
-            <button
-                onClick={
-                    updateClient
-                }
-            >
-                Actualizar
-            </button>
-
-            {" "}
-
-            <button
-                onClick={() =>
-                    navigate(
-                        "/clients"
-                    )
-                }
-            >
-                Volver
-            </button>
 
         </div>
     );

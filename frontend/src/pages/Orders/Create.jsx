@@ -110,7 +110,7 @@ function OrdersCreate() {
                 return (
                     total +
                     item.price *
-                        item.quantity
+                    item.quantity
                 );
             },
             0
@@ -149,206 +149,319 @@ function OrdersCreate() {
             alert(
                 error.response?.data
                     ?.message ??
-                    "Error al crear el pedido."
+                "Error al crear el pedido."
             );
         }
     }
 
     return (
-        <div>
-            <h1>Nuevo Pedido</h1>
+        <div className="card">
 
-            <hr />
+            <div className="card-body">
 
-            <div>
-                <label>Fecha</label>
+                <h1 className="mb-4">
+                    Nuevo Pedido
+                </h1>
 
-                <br />
+                <div className="row">
 
-                <input
-                    type="date"
-                    value={orderDate}
-                    onChange={(e) =>
-                        setOrderDate(
-                            e.target.value
-                        )
-                    }
-                />
-            </div>
+                    <div className="col-md-6 mb-3">
 
-            <br />
+                        <label className="form-label">
+                            Fecha
+                        </label>
 
-            <div>
-                <label>Cliente</label>
+                        <input
+                            className="form-control"
+                            type="date"
+                            value={orderDate}
+                            onChange={(e) =>
+                                setOrderDate(
+                                    e.target.value
+                                )
+                            }
+                        />
 
-                <br />
+                    </div>
 
-                <select
-                    value={clientId}
-                    onChange={(e) =>
-                        setClientId(
-                            e.target.value
-                        )
-                    }
-                >
-                    <option value="">
-                        Seleccione...
-                    </option>
+                    <div className="col-md-6 mb-3">
 
-                    {clients.map((client) => (
-                        <option
-                            key={client.id}
-                            value={client.id}
+                        <label className="form-label">
+                            Cliente
+                        </label>
+
+                        <select
+                            className="form-select"
+                            value={clientId}
+                            onChange={(e) =>
+                                setClientId(
+                                    e.target.value
+                                )
+                            }
                         >
-                            {client.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                            <option value="">
+                                Seleccione...
+                            </option>
 
-            <br />
-
-            <div>
-                <label>Producto</label>
-
-                <br />
-
-                <select
-                    value={productId}
-                    onChange={(e) =>
-                        setProductId(
-                            e.target.value
-                        )
-                    }
-                >
-                    <option value="">
-                        Seleccione...
-                    </option>
-
-                    {products.map((product) => (
-                        <option
-                            key={product.id}
-                            value={product.id}
-                        >
-                            {product.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            <br />
-
-            <div>
-                <label>Cantidad</label>
-
-                <br />
-
-                <input
-                    type="number"
-                    min="1"
-                    value={quantity}
-                    onChange={(e) =>
-                        setQuantity(
-                            Number(
-                                e.target.value
-                            )
-                        )
-                    }
-                />
-            </div>
-
-            <br />
-
-            <button onClick={addProduct}>
-                Agregar Producto
-            </button>
-
-            <hr />
-
-            <h2>Detalle del pedido</h2>
-
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {items.length === 0 ? (
-                        <tr>
-                            <td colSpan="5">
-                                No hay productos
-                                agregados.
-                            </td>
-                        </tr>
-                    ) : (
-                        items.map((item) => (
-                            <tr
-                                key={
-                                    item.product_id
-                                }
-                            >
-                                <td>
-                                    {item.name}
-                                </td>
-
-                                <td>
-                                    $
-                                    {item.price.toFixed(
-                                        2
-                                    )}
-                                </td>
-
-                                <td>
-                                    {
-                                        item.quantity
-                                    }
-                                </td>
-
-                                <td>
-                                    $
-                                    {(
-                                        item.price *
-                                        item.quantity
-                                    ).toFixed(
-                                        2
-                                    )}
-                                </td>
-
-                                <td>
-                                    <button
-                                        onClick={() =>
-                                            removeProduct(
-                                                item.product_id
-                                            )
+                            {clients.map(
+                                (client) => (
+                                    <option
+                                        key={
+                                            client.id
+                                        }
+                                        value={
+                                            client.id
                                         }
                                     >
-                                        Eliminar
-                                    </button>
+                                        {
+                                            client.name
+                                        }
+                                    </option>
+                                )
+                            )}
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <h4 className="mb-3">
+                    Agregar Producto
+                </h4>
+
+                <div className="row">
+
+                    <div className="col-md-6 mb-3">
+
+                        <label className="form-label">
+                            Producto
+                        </label>
+
+                        <select
+                            className="form-select"
+                            value={productId}
+                            onChange={(e) =>
+                                setProductId(
+                                    e.target.value
+                                )
+                            }
+                        >
+                            <option value="">
+                                Seleccione...
+                            </option>
+
+                            {products.map(
+                                (product) => (
+                                    <option
+                                        key={
+                                            product.id
+                                        }
+                                        value={
+                                            product.id
+                                        }
+                                    >
+                                        {
+                                            product.name
+                                        }
+                                    </option>
+                                )
+                            )}
+                        </select>
+
+                    </div>
+
+                    <div className="col-md-3 mb-3">
+
+                        <label className="form-label">
+                            Cantidad
+                        </label>
+
+                        <input
+                            className="form-control"
+                            type="number"
+                            min="1"
+                            value={quantity}
+                            onChange={(e) =>
+                                setQuantity(
+                                    Number(
+                                        e.target
+                                            .value
+                                    )
+                                )
+                            }
+                        />
+
+                    </div>
+
+                    <div className="col-md-3 d-flex align-items-end mb-3">
+
+                        <button
+                            className="btn btn-primary w-100"
+                            onClick={
+                                addProduct
+                            }
+                        >
+                            Agregar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <h4 className="mb-3">
+                    Detalle del Pedido
+                </h4>
+
+                <table className="table table-striped table-hover">
+
+                    <thead className="table-dark">
+
+                        <tr>
+                            <th>
+                                Producto
+                            </th>
+
+                            <th>
+                                Precio
+                            </th>
+
+                            <th>
+                                Cantidad
+                            </th>
+
+                            <th>
+                                Subtotal
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {items.length ===
+                            0 ? (
+
+                            <tr>
+
+                                <td
+                                    colSpan="5"
+                                    className="text-center"
+                                >
+                                    No hay productos agregados.
                                 </td>
+
                             </tr>
-                        ))
-                    )}
-                </tbody>
-            </table>
 
-            <h3>
-                Total: $
-                {calculateTotal().toFixed(
-                    2
-                )}
-            </h3>
+                        ) : (
 
-            <br />
+                            items.map(
+                                (item) => (
 
-            <button onClick={saveOrder}>
-                Guardar Pedido
-            </button>
+                                    <tr
+                                        key={
+                                            item.product_id
+                                        }
+                                    >
+
+                                        <td>
+                                            {
+                                                item.name
+                                            }
+                                        </td>
+
+                                        <td>
+                                            $
+                                            {item.price.toFixed(
+                                                2
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            {
+                                                item.quantity
+                                            }
+                                        </td>
+
+                                        <td>
+                                            $
+                                            {(
+                                                item.price *
+                                                item.quantity
+                                            ).toFixed(
+                                                2
+                                            )}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                onClick={() =>
+                                                    removeProduct(
+                                                        item.product_id
+                                                    )
+                                                }
+                                            >
+                                                Eliminar
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+                                )
+                            )
+
+                        )}
+
+                    </tbody>
+
+                </table>
+
+                <div className="d-flex justify-content-end mb-4">
+
+                    <h3 className="mb-0">
+
+                        Total:
+                        {" "}
+                        $
+                        {calculateTotal().toFixed(
+                            2
+                        )}
+
+                    </h3>
+
+                </div>
+
+                <button
+                    className="btn btn-success me-2"
+                    onClick={
+                        saveOrder
+                    }
+                >
+                    Guardar Pedido
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() =>
+                        navigate(
+                            "/orders"
+                        )
+                    }
+                >
+                    Volver
+                </button>
+
+            </div>
+
         </div>
     );
 }

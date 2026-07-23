@@ -62,109 +62,128 @@ function ClientsIndex() {
     }
 
     return (
-        <div>
+        <div className="card">
 
-            <h1>Clientes</h1>
+            <div className="card-body">
 
-            <Link to="/clients/create">
-                Nuevo Cliente
-            </Link>
+                <div className="d-flex justify-content-between align-items-center mb-4">
 
-            <br />
-            <br />
+                    <h1 className="mb-0">
+                        Clientes
+                    </h1>
 
-            <table border="1">
+                    <Link
+                        to="/clients/create"
+                        className="btn btn-success"
+                    >
+                        Nuevo Cliente
+                    </Link>
 
-                <thead>
+                </div>
 
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Documento</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
+                <table className="table table-striped table-hover align-middle">
 
-                </thead>
-
-                <tbody>
-
-                    {clients.length === 0 ? (
+                    <thead className="table-dark">
 
                         <tr>
-                            <td colSpan="6">
-                                No existen clientes registrados.
-                            </td>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
 
-                    ) : (
+                    </thead>
 
-                        clients.map((client) => (
+                    <tbody>
 
-                            <tr key={client.id}>
+                        {clients.length === 0 ? (
 
-                                <td>
-                                    {client.name}
-                                </td>
+                            <tr>
 
-                                <td>
-                                    {client.document}
-                                </td>
-
-                                <td>
-                                    {
-                                        client.email ??
-                                        "-"
-                                    }
-                                </td>
-
-                                <td>
-                                    {
-                                        client.phone ??
-                                        "-"
-                                    }
-                                </td>
-
-                                <td>
-                                    {
-                                        client.is_active
-                                            ? "Activo"
-                                            : "Inactivo"
-                                    }
-                                </td>
-
-                                <td>
-
-                                    <Link
-                                        to={`/clients/${client.id}/edit`}
-                                    >
-                                        Editar
-                                    </Link>
-
-                                    {" | "}
-
-                                    <button
-                                        onClick={() =>
-                                            deleteClient(
-                                                client.id
-                                            )
-                                        }
-                                    >
-                                        Eliminar
-                                    </button>
-
+                                <td
+                                    colSpan="6"
+                                    className="text-center"
+                                >
+                                    No existen clientes registrados.
                                 </td>
 
                             </tr>
 
-                        ))
+                        ) : (
 
-                    )}
+                            clients.map((client) => (
 
-                </tbody>
+                                <tr key={client.id}>
 
-            </table>
+                                    <td>
+                                        {client.name}
+                                    </td>
+
+                                    <td>
+                                        {client.document}
+                                    </td>
+
+                                    <td>
+                                        {client.email ?? "-"}
+                                    </td>
+
+                                    <td>
+                                        {client.phone ?? "-"}
+                                    </td>
+
+                                    <td>
+
+                                        {client.is_active ? (
+
+                                            <span className="badge bg-success">
+                                                Activo
+                                            </span>
+
+                                        ) : (
+
+                                            <span className="badge bg-secondary">
+                                                Inactivo
+                                            </span>
+
+                                        )}
+
+                                    </td>
+
+                                    <td>
+
+                                        <Link
+                                            to={`/clients/${client.id}/edit`}
+                                            className="btn btn-warning btn-sm me-2"
+                                        >
+                                            Editar
+                                        </Link>
+
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() =>
+                                                deleteClient(
+                                                    client.id
+                                                )
+                                            }
+                                        >
+                                            Eliminar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            ))
+
+                        )}
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
     );

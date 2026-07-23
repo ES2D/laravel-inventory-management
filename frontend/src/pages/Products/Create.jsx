@@ -83,205 +83,205 @@ function ProductsCreate() {
     }
 
     return (
-        <div>
-            <h1>Nuevo Producto</h1>
+        <div className="card">
 
-            <hr />
+            <div className="card-body">
 
-            <div>
-                <label>Nombre</label>
-                <br />
+                <h1 className="mb-4">
+                    Nuevo Producto
+                </h1>
 
-                <input
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                />
-            </div>
+                <div className="mb-3">
 
-            <br />
+                    <label className="form-label">
+                        Nombre
+                    </label>
 
-            <div>
-                <label>SKU</label>
-                <br />
-
-                <input
-                    name="sku"
-                    value={form.sku}
-                    onChange={handleChange}
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>Categoría</label>
-                <br />
-
-                <select
-                    name="category_id"
-                    value={form.category_id}
-                    onChange={handleChange}
-                >
-                    <option value="">
-                        Seleccione...
-                    </option>
-
-                    {categories.map((category) => (
-                        <option
-                            key={category.id}
-                            value={category.id}
-                        >
-                            {category.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Unidad de Medida
-                </label>
-
-                <br />
-
-                <select
-                    name="unit"
-                    value={
-                        form.unit_of_measure
-                    }
-                    onChange={handleChange}
-                >
-                    <option value="">
-                        Seleccione...
-                    </option>
-
-                    <option value="Unidad">
-                        Unidad
-                    </option>
-
-                    <option value="Caja">
-                        Caja
-                    </option>
-
-                    <option value="Paquete">
-                        Paquete
-                    </option>
-
-                    <option value="Par">
-                        Par
-                    </option>
-                </select>
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Precio Compra
-                </label>
-
-                <br />
-
-                <input
-                    type="number"
-                    name="purchase_price"
-                    value={
-                        form.purchase_price
-                    }
-                    onChange={handleChange}
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Precio Venta
-                </label>
-
-                <br />
-
-                <input
-                    type="number"
-                    name="sale_price"
-                    value={form.sale_price}
-                    onChange={handleChange}
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>Stock</label>
-
-                <br />
-
-                <input
-                    type="number"
-                    name="current_stock"
-                    value={
-                        form.current_stock
-                    }
-                    onChange={handleChange}
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
-                    Stock Mínimo
-                </label>
-
-                <br />
-
-                <input
-                    type="number"
-                    name="minimum_stock"
-                    value={
-                        form.minimum_stock
-                    }
-                    onChange={handleChange}
-                />
-            </div>
-
-            <br />
-
-            <div>
-                <label>
                     <input
-                        type="checkbox"
-                        name="is_active"
-                        checked={
-                            form.is_active
-                        }
+                        className="form-control"
+                        name="name"
+                        value={form.name}
                         onChange={handleChange}
                     />
 
-                    {" "}Activo
-                </label>
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        SKU
+                    </label>
+
+                    <input
+                        className="form-control"
+                        name="sku"
+                        value={form.sku}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Categoría
+                    </label>
+
+                    <select
+                        className="form-select"
+                        name="category_id"
+                        value={form.category_id}
+                        onChange={handleChange}
+                    >
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                        {categories.map((category) => (
+                            <option
+                                key={category.id}
+                                value={category.id}
+                            >
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Unidad de Medida
+                    </label>
+
+                    <select
+                        className="form-select"
+                        name="unit"
+                        value={form.unit}
+                        onChange={handleChange}
+                    >
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                        <option value="Unidad">
+                            Unidad
+                        </option>
+
+                        <option value="Caja">
+                            Caja
+                        </option>
+
+                        <option value="Paquete">
+                            Paquete
+                        </option>
+
+                        <option value="Par">
+                            Par
+                        </option>
+                    </select>
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Precio Compra
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="number"
+                        name="purchase_price"
+                        value={form.purchase_price}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Precio Venta
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="number"
+                        name="sale_price"
+                        value={form.sale_price}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Stock
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="number"
+                        name="current_stock"
+                        value={form.current_stock}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="mb-3">
+
+                    <label className="form-label">
+                        Stock Mínimo
+                    </label>
+
+                    <input
+                        className="form-control"
+                        type="number"
+                        name="minimum_stock"
+                        value={form.minimum_stock}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="form-check mb-4">
+
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="is_active"
+                        checked={form.is_active}
+                        onChange={handleChange}
+                    />
+
+                    <label className="form-check-label">
+                        Activo
+                    </label>
+
+                </div>
+
+                <button
+                    className="btn btn-success me-2"
+                    onClick={saveProduct}
+                >
+                    Guardar
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() =>
+                        navigate("/products")
+                    }
+                >
+                    Volver
+                </button>
+
             </div>
 
-            <br />
-
-            <button
-                onClick={saveProduct}
-            >
-                Guardar
-            </button>
-
-            {" "}
-
-            <button
-                onClick={() =>
-                    navigate("/products")
-                }
-            >
-                Volver
-            </button>
         </div>
     );
 }
