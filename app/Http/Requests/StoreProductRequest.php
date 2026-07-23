@@ -68,6 +68,12 @@ class StoreProductRequest extends FormRequest
                 'gte:purchase_price'
             ],
 
+            'current_stock' => [
+                'required',
+                'integer',
+                'min:0',
+            ],
+
             'minimum_stock' => [
                 'required',
                 'integer',
@@ -116,7 +122,6 @@ class StoreProductRequest extends FormRequest
     public function attributes(): array
     {
         return [
-
             'category_id' => 'categoría',
             'sku' => 'SKU',
             'barcode' => 'código de barras',
@@ -124,13 +129,8 @@ class StoreProductRequest extends FormRequest
             'purchase_price' => 'precio de compra',
             'sale_price' => 'precio de venta',
             'minimum_stock' => 'stock mínimo',
+            'current_stock' => 'stock actual',
             'unit' => 'unidad',
-            'current_stock' => [
-                'required',
-                'integer',
-                'min:0',
-            ],
-
         ];
     }
 

@@ -6,6 +6,8 @@ import Dashboard from "../pages/Dashboard";
 import CategoriesIndex from "../pages/Categories/Index";
 import CategoriesCreate from "../pages/Categories/Create";
 import ProductsIndex from "../pages/Products/Index";
+import ProductsCreate from "../pages/Products/Create";
+import ProductsEdit from "../pages/Products/Edit";
 import ClientsIndex from "../pages/Clients/Index";
 import OrdersIndex from "../pages/Orders/Index";
 import OrdersCreate from "../pages/Orders/Create";
@@ -34,10 +36,17 @@ export const router = createBrowserRouter([
                 path: "categories/:id/edit",
                 element: <CategoriesEdit />,
             },
-
             {
                 path: "products",
                 element: <ProductsIndex />,
+            },
+            {
+                path: "products/create",
+                element: <ProductsCreate />,
+            },
+            {
+                path: "products/:id/edit",
+                element: <ProductsEdit />,
             },
             {
                 path: "clients",
