@@ -9,10 +9,13 @@ import ProductsIndex from "../pages/Products/Index";
 import ProductsCreate from "../pages/Products/Create";
 import ProductsEdit from "../pages/Products/Edit";
 import ClientsIndex from "../pages/Clients/Index";
+import ClientsCreate from "../pages/Clients/Create";
+import ClientsEdit from "../pages/Clients/Edit";
 import OrdersIndex from "../pages/Orders/Index";
 import OrdersCreate from "../pages/Orders/Create";
 import OrdersShow from "../pages/Orders/Show";
 import CategoriesEdit from "../pages/Categories/Edit";
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -51,6 +54,14 @@ export const router = createBrowserRouter([
             {
                 path: "clients",
                 element: <ClientsIndex />,
+            },
+            {
+                path: "clients/create",
+                element: <ClientsCreate />,
+            },
+            {
+                path: "clients/:id/edit",
+                element: <ClientsEdit />,
             },
             {
                 path: "orders",
