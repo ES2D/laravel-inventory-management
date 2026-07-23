@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 function OrdersIndex() {
     const [orders, setOrders] = useState([]);
@@ -26,6 +27,7 @@ function OrdersIndex() {
                         <th>Fecha</th>
                         <th>Estado</th>
                         <th>Total</th>
+                        <th>Acciones</th>
                     </tr>
 
                 </thead>
@@ -52,6 +54,16 @@ function OrdersIndex() {
 
                             <td>
                                 ${order.total}
+                            </td>
+
+                            <td>
+
+                                <Link
+                                    to={`/orders/${order.id}`}
+                                >
+                                    Ver
+                                </Link>
+
                             </td>
 
                         </tr>

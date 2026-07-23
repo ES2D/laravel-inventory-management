@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Order;
 use App\Services\OrderService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 
@@ -51,21 +50,27 @@ class OrderController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(
-        Request $request,
+    public function changeStatus(
         Order $order
     ) {
-        //
+        $this->orderService
+            ->changeStatus($order);
+
+        return response()->json([
+            'message' =>
+            'Estado actualizado.',
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
+    public function cancel(
+        Order $order
+    ) {
+        $this->orderService
+            ->cancel($order);
+
+        return response()->json([
+            'message' =>
+            'Pedido cancelado.',
+        ]);
     }
 }

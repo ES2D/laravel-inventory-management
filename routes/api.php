@@ -11,6 +11,16 @@ Route::apiResource(
     OrderController::class
 );
 
+Route::patch(
+    'orders/{order}/status',
+    [OrderController::class, 'changeStatus']
+);
+
+Route::patch(
+    'orders/{order}/cancel',
+    [OrderController::class, 'cancel']
+);
+
 Route::apiResource(
     'clients',
     ClientController::class

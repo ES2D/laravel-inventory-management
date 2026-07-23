@@ -8,6 +8,7 @@ import ProductsIndex from "../pages/Products/Index";
 import ClientsIndex from "../pages/Clients/Index";
 import OrdersIndex from "../pages/Orders/Index";
 import OrdersCreate from "../pages/Orders/Create";
+import OrdersShow from "../pages/Orders/Show";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: "orders/create",
                 element: <OrdersCreate />,
+            },
+            {
+                path: "orders/:id",
+                element: <OrdersShow />,
             },
         ],
     },
