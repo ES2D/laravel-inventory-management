@@ -80,6 +80,12 @@ class UpdateProductRequest extends FormRequest
                 'boolean',
             ],
 
+            'current_stock' => [
+                'required',
+                'integer',
+                'min:0',
+            ],
+
         ];
     }
 

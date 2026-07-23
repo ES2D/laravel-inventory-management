@@ -55,6 +55,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('orders.index') }}">
+                            Pedidos
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>

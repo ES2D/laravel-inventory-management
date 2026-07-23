@@ -125,6 +125,11 @@ class StoreProductRequest extends FormRequest
             'sale_price' => 'precio de venta',
             'minimum_stock' => 'stock mínimo',
             'unit' => 'unidad',
+            'current_stock' => [
+                'required',
+                'integer',
+                'min:0',
+            ],
 
         ];
     }

@@ -186,6 +186,24 @@
 
     </div>
 
+    <div class="col-md-4">
+
+        <label class="form-label">
+            Stock inicial
+        </label>
+
+        <input type="number" name="current_stock" min="0"
+            class="form-control @error('current_stock') is-invalid @enderror"
+            value="{{ old('current_stock', $product->current_stock ?? 0) }}">
+
+        @error('current_stock')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+
+    </div>
+
 </div>
 
 <hr class="my-4">
