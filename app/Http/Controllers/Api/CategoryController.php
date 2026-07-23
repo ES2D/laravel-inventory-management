@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -19,32 +20,50 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(
+        StoreCategoryRequest $request
+    ) {
+        return Category::create(
+            $request->validated()
+        );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(
+        Category $category
+    ) {
+        return $category;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+
+    public function update(
+        UpdateCategoryRequest $request,
+        Category $category
+    ) {
+        $category->update(
+            $request->validated()
+        );
+
+        return response()->json([
+            'message' => 'Categoría actualizada correctamente.',
+            'data' => $category,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return response()->json([
+            'message' => 'Categoría eliminada correctamente.',
+        ]);
     }
 }
